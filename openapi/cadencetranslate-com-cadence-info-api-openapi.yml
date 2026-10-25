@@ -1,0 +1,126 @@
+openapi: 3.2.0
+info:
+  title: Cadence Translate Cadence Info API
+  description: API for translating text using the Cadence Translate service.
+  version: 1.0.0
+tags:
+- name: Cadence Info
+paths:
+  /cadence-info:
+    get:
+      summary: Cadence Info
+      description: Cadence Info endpoint.
+      operationId: cadence_info_cadence_info_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CadenceInfoResponse'
+      tags:
+      - Cadence Info
+components:
+  schemas:
+    ServiceType:
+      type: string
+      enum:
+      - AI
+      - HITL
+      - AI_TRANSLATED
+      - HITL_TRANSLATED
+      - AI_LITE
+      - HITL_LITE
+      - SF_LLM_QA
+      - AI_V1
+      - AI_V1_TRANSLATED
+      - TRANSLATION
+      - MARKET_RESEARCH
+      - RCI
+      - RSI
+      - OPI
+      - OSI
+      title: ServiceType
+      description: Type of service offered to a client.
+    CadenceInfoResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        languages:
+          items:
+            $ref: '#/components/schemas/InternalLanguageCodeEnum'
+          type: array
+          title: Languages
+        offeredTranscriptTypes:
+          items:
+            $ref: '#/components/schemas/ServiceType'
+          type: array
+          title: Offeredtranscripttypes
+        supports:
+          $ref: '#/components/schemas/CadenceInfoSupports'
+      type: object
+      required:
+      - name
+      - languages
+      - offeredTranscriptTypes
+      - supports
+      title: CadenceInfoResponse
+    InternalLanguageCodeEnum:
+      type: string
+      enum:
+      - ar
+      - zh-cn
+      - zh-hk
+      - zh-tw
+      - nl
+      - en
+      - fr
+      - de
+      - he
+      - hi
+      - id
+      - it
+      - ja
+      - ko
+      - 'no'
+      - pt
+      - pt-br
+      - ru
+      - es
+      - sv
+      - tr
+      - vi
+      - da
+      - undefined
+      title: InternalLanguageCodeEnum
+      description: Enum for internal language codes.
+    CadenceInfoSupports:
+      properties:
+        rush:
+          type: boolean
+          title: Rush
+        cancel:
+          type: boolean
+          title: Cancel
+        getOrders:
+          type: boolean
+          title: Getorders
+        sandbox:
+          type: boolean
+          title: Sandbox
+        reprocess:
+          type: boolean
+          title: Reprocess
+        timestamped:
+          type: boolean
+          title: Timestamped
+      type: object
+      required:
+      - rush
+      - cancel
+      - getOrders
+      - sandbox
+      - reprocess
+      - timestamped
+      title: CadenceInfoSupports

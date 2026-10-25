@@ -1,25 +1,141 @@
 aid: cadencetranslate-com
 name: Cadence
-description: 'Cadence is a company surfaced via the API Evangelist harvest backlog (source: vc-portfolio;
-  backed by 500-global) and added to the network as a stub for full-pipeline profiling.'
+image: https://framerusercontent.com/assets/NsFtNAF7HyvrUoH1oBwY2DYHDQo.jpg
+description: Cadence Translate provides interpretation, translation, transcription, and market research services tailored for capital markets,
+  expert networks, consultancies, and corporations. Trusted by global investment teams since 2014, the company enables seamless multilingual communication
+  for investment and business decisions worldwide. Their platform supports a range of language services, ensuring accuracy and compliance across
+  financial sectors.
 url: https://raw.githubusercontent.com/api-evangelist/cadencetranslate-com/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:vc-portfolio
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-25 (modular-v1; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-25'
 modified: '2026-10-25'
 tags:
 - Company
-apis: []
+- Language Services
+- Financial Technology
+- Translation
+- Global Markets
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: Vendors
+  url: vendors/cadencetranslate-com-vendors.yml
+- type: AgenticAccess
+  url: agentic-access/cadencetranslate-com-agentic-access.yml
+- type: Spectral
+  url: rules/cadencetranslate-com-rules.yml
+- type: JSONLD
+  url: json-ld/cadencetranslate-com-context.jsonld
+- type: Vocabulary
+  url: vocabulary/cadencetranslate-com-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/cadencetranslate-com-data-model.yml
+- type: ErrorCatalog
+  url: errors/cadencetranslate-com-problem-types.yml
+- type: Conformance
+  url: conformance/cadencetranslate-com-conformance.yml
+- type: LLMsTxt
+  url: llms/cadencetranslate-com-llms.txt
+- type: Hosts
+  url: hosts/cadencetranslate-com-hosts.yml
+- type: TermsOfService
+  url: https://www.cadencetranslate.com/terms-and-conditions
+- type: Support
+  url: https://www.cadencetranslate.com/Support
+- type: PrivacyPolicy
+  url: https://www.cadencetranslate.com/privacy-policy
+- type: Blog
+  url: https://www.cadencetranslate.com/blog
+- type: Documentation
+  url: https://docs.cadencetranslate.com/
+- type: DomainSecurity
+  url: security/cadencetranslate-com-domain-security.yml
+- type: Website
+  url: https://www.cadencetranslate.com
+apis:
+- aid: cadencetranslate-com:cadencetranslate-com-cadence-info-api
+  name: Cadence Cadence Info API
+  description: The Cadence Info API from Cadence — 1 operation(s) for cadence info.
+  humanURL: https://api.cadencetranslate.com
+  baseURL: https://api.cadencetranslate.com
+  tags:
+  - Cadence Info
+  properties:
+  - type: OpenAPI
+    url: openapi/cadencetranslate-com-cadence-info-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-order-create-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-cadence-info-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/cadencetranslate-com-response-neo-cursor-paginated-result-order-detail-read-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-order-detail-with-items-read-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-order-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-none-type-schema.json
+- aid: cadencetranslate-com:cadencetranslate-com-orders-api
+  name: Cadence Orders API
+  description: The Orders API from Cadence — 2 operation(s) for orders.
+  humanURL: https://api.cadencetranslate.com
+  baseURL: https://api.cadencetranslate.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/cadencetranslate-com-orders-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-order-create-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-cadence-info-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/cadencetranslate-com-response-neo-cursor-paginated-result-order-detail-read-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-order-detail-with-items-read-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-order-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-none-type-schema.json
+- aid: cadencetranslate-com:cadencetranslate-com-public-api
+  name: Cadence Public API
+  description: The Public API from Cadence — 3 operation(s) for public.
+  humanURL: https://api.cadencetranslate.com
+  baseURL: https://api.cadencetranslate.com
+  tags:
+  - Public
+  properties:
+  - type: OpenAPI
+    url: openapi/cadencetranslate-com-public-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-order-create-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-cadence-info-response-schema.json
+  - type: JSONSchema
+    url: >-
+      json-schema/cadencetranslate-com-response-neo-cursor-paginated-result-order-detail-read-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-order-detail-with-items-read-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-order-id-response-schema.json
+  - type: JSONSchema
+    url: json-schema/cadencetranslate-com-response-none-type-schema.json
 x-backed-by:
 - 500-global
-common:
-- type: Website
-  url: https://cadencetranslate.com
+x-enrichment:
+  date: '2026-10-25'
+  status: enriched
+  artifacts_added: 19
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

@@ -1,0 +1,25 @@
+{
+  "provider": "cadencetranslate-com",
+  "sources": [
+    "cadencetranslate-com-openapi.json"
+  ],
+  "outputs": [
+    "cadencetranslate-com-cadence-info-api-openapi.yml",
+    "cadencetranslate-com-orders-api-openapi.yml",
+    "cadencetranslate-com-public-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/cadencetranslate-com-openapi.json"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "cadencetranslate-com-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "cadencetranslate-com-openapi.json: tagged paths GET /cadence-info -> Cadence Info",
+    "cadencetranslate-com-openapi.json: declared missing tag: Cadence Info",
+    "cadencetranslate-com-openapi.json: declared missing tag: Orders",
+    "cadencetranslate-com-openapi.json: declared missing tag: Public",
+    "apis.yml register: written (+3 apis, 3 total)"
+  ],
+  "skipped": []
+}

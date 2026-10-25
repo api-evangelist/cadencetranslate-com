@@ -1,0 +1,33 @@
+generated: '2026-10-25'
+method: probed
+source:
+  - https://www.cadencetranslate.com/privacy-policy
+signals:
+  data_retention:
+    - note: Retention period is limited to service usage and legal requirements.
+      evidence:
+        - source: https://www.cadencetranslate.com/privacy-policy
+          http_status: 200
+          fetched: true
+          quote: "We do not store the personal data for longer than is legally permitted and necessary for related processing purposes. ... we store your personal data for as long as are using our services or for as long as we have another purpose to do so and, thereafter, for no longer than is required or permitted by law or necessary for internal reporting and reconciliation purposes."
+  data_subject_request:
+    - note: Provides data subject rights including access, rectification, erasure, restriction, objection, portability.
+      evidence:
+        - source: https://www.cadencetranslate.com/privacy-policy
+          http_status: 200
+          fetched: true
+          quote: "Every user is entitled to the following: The right to access ... The right to rectification ... The right to erasure ... The right to restrict and object to processing ... The right to data portability ..."
+  subprocessors:
+    - note: Lists Hubspot as a subprocessors for analytics, but states data not shared.
+      evidence:
+        - source: https://www.cadencetranslate.com/privacy-policy
+          http_status: 200
+          fetched: true
+          quote: "Third Party Data Usage Our site uses Hubspot, a third party traffic measurement, CRM (Customer Relationship Management), and marketing service, to analyze how visitors use our site. ... This information is never shared with parties outside of Cadence or Hubspot. Hubspot does not have permission to access your contact information, use the information stored on their system via our account to communicate with you, or distribute your information in any way."
+  data_residency:
+    - note: Data stored in US (Texas, Arizona).
+      evidence:
+        - source: https://www.cadencetranslate.com/privacy-policy
+          http_status: 200
+          fetched: true
+          quote: "All data and contact information is stored in secure servers in the states of Texas and Arizona in the United States of America."

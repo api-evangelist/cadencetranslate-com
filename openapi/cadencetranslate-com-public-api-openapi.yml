@@ -1,0 +1,105 @@
+openapi: 3.2.0
+info:
+  title: Cadence Translate Public API
+  description: API for translating text using the Cadence Translate service.
+  version: 1.0.0
+tags:
+- name: Public
+paths:
+  /health:
+    get:
+      tags:
+      - Public
+      summary: Health
+      description: Health check endpoint.
+      operationId: health_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response_NoneType_'
+  /.well-known/jwks.json:
+    get:
+      tags:
+      - Public
+      summary: Jwks
+      description: 'JWKS document (RFC 7517) for verifying RS256-signed access tokens.
+
+
+        No auth, public by design (NP-1131) - matches the OIDC/RFC-8414
+
+        well-known discovery convention, so it returns the bare JWKS shape
+
+        rather than the ``Response[...]`` envelope other endpoints use.'
+      operationId: jwks__well_known_jwks_json_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response Jwks  Well Known Jwks Json Get
+  /.well-known/editor-jwks.json:
+    get:
+      tags:
+      - Public
+      summary: Editor Jwks
+      description: 'JWKS document (RFC 7517) for verifying ES256-signed Mega Editor V2
+
+        editor tokens (NP-1276). Separate from ``jwks()`` above: a distinct
+
+        keyset, algorithm and audience from NP''s own RS256 session tokens.
+
+
+        No auth, public by design, same rationale as ``jwks()``.
+
+
+        404s where no editor keys are configured, rather than letting
+
+        ``build_editor_jwks()`` raise on an empty PEM. Keyed on the keys
+
+        themselves, deliberately not on ``MEGA_EDITOR_V2_ROLLOUT_ENABLED``: an
+
+        environment that has already run the pilot keeps serving this document
+
+        after the rollout flag is switched off, so tokens held by tasks still in
+
+        flight keep verifying.'
+      operationId: editor_jwks__well_known_editor_jwks_json_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response Editor Jwks  Well Known Editor Jwks Json Get
+components:
+  schemas:
+    Response_NoneType_:
+      properties:
+        message:
+          type: string
+          title: Message
+          default: Operation successful
+        success:
+          type: boolean
+          title: Success
+          default: true
+        data:
+          type: 'null'
+          title: Data
+        errors:
+          anyOf:
+          - additionalProperties:
+              type: string
+            type: object
+          - type: 'null'
+          title: Errors
+      type: object
+      title: Response[NoneType]

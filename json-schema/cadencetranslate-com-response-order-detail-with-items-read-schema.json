@@ -1,0 +1,376 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cadencetranslate-com/main/json-schema/cadencetranslate-com-response-order-detail-with-items-read-schema.json",
+  "title": "Response[OrderDetailWithItemsRead]",
+  "x-generated": "2026-10-25",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cadencetranslate-com-openapi.json#/components/schemas/Response_OrderDetailWithItemsRead_",
+  "properties": {
+    "message": {
+      "type": "string",
+      "title": "Message",
+      "default": "Operation successful"
+    },
+    "success": {
+      "type": "boolean",
+      "title": "Success",
+      "default": true
+    },
+    "data": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OrderDetailWithItemsRead"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "errors": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Errors"
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "DeliverySettingRead": {
+      "properties": {
+        "method": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Method"
+        },
+        "templateFormat": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Templateformat"
+        },
+        "templateId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Templateid"
+        },
+        "emails": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Emails"
+        },
+        "callbackUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Callbackurl"
+        }
+      },
+      "type": "object",
+      "title": "DeliverySettingRead",
+      "description": "Client read shape that omits persisted webhook header values."
+    },
+    "DeliverySettingsRead": {
+      "items": {
+        "$ref": "#/$defs/DeliverySettingRead"
+      },
+      "type": "array",
+      "title": "DeliverySettingsRead",
+      "description": "Client read wrapper without write-time delivery validators."
+    },
+    "ExternalOrderStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "COMPLETED",
+        "CANCELLED",
+        "REJECTED",
+        "IN_PROGRESS"
+      ],
+      "title": "ExternalOrderStatus"
+    },
+    "InternalLanguageCodeEnum": {
+      "type": "string",
+      "enum": [
+        "ar",
+        "zh-cn",
+        "zh-hk",
+        "zh-tw",
+        "nl",
+        "en",
+        "fr",
+        "de",
+        "he",
+        "hi",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "no",
+        "pt",
+        "pt-br",
+        "ru",
+        "es",
+        "sv",
+        "tr",
+        "vi",
+        "da",
+        "undefined"
+      ],
+      "title": "InternalLanguageCodeEnum",
+      "description": "Enum for internal language codes."
+    },
+    "OrderDetailWithItemsRead": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Id"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Organizationid"
+        },
+        "clientProjectId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientprojectid"
+        },
+        "clientProjectName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientprojectname"
+        },
+        "status": {
+          "$ref": "#/$defs/ExternalOrderStatus"
+        },
+        "itemsCount": {
+          "type": "integer",
+          "title": "Itemscount",
+          "default": 0
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Createdat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Updatedat"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/OrderItemDetailRead"
+          },
+          "type": "array",
+          "title": "Items"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id",
+        "organizationId",
+        "status",
+        "createdAt",
+        "updatedAt",
+        "items"
+      ],
+      "title": "OrderDetailWithItemsRead",
+      "description": "Order detail projection returned by GET /orders/{order_id}."
+    },
+    "OrderItemDetailRead": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Id"
+        },
+        "orderId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Orderid"
+        },
+        "clientExternalId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientexternalid"
+        },
+        "serviceType": {
+          "$ref": "#/$defs/ServiceType"
+        },
+        "serviceGroup": {
+          "$ref": "#/$defs/ServiceGroup"
+        },
+        "contentUrl": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Contenturl"
+        },
+        "deliverySettings": {
+          "$ref": "#/$defs/DeliverySettingsRead"
+        },
+        "sourceLanguage": {
+          "$ref": "#/$defs/InternalLanguageCodeEnum"
+        },
+        "targetLanguage": {
+          "$ref": "#/$defs/InternalLanguageCodeEnum"
+        },
+        "turnaroundTime": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TurnAroundTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/ExternalOrderStatus"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Createdat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Updatedat"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id",
+        "serviceType",
+        "serviceGroup",
+        "deliverySettings",
+        "sourceLanguage",
+        "targetLanguage",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ],
+      "title": "OrderItemDetailRead",
+      "description": "Client-facing order item read shape for GET /orders/{order_id}."
+    },
+    "ServiceGroup": {
+      "type": "string",
+      "enum": [
+        "transcript",
+        "translation",
+        "interpretation",
+        "market_research"
+      ],
+      "title": "ServiceGroup",
+      "description": "Broad family a service belongs to."
+    },
+    "ServiceType": {
+      "type": "string",
+      "enum": [
+        "AI",
+        "HITL",
+        "AI_TRANSLATED",
+        "HITL_TRANSLATED",
+        "AI_LITE",
+        "HITL_LITE",
+        "SF_LLM_QA",
+        "AI_V1",
+        "AI_V1_TRANSLATED",
+        "TRANSLATION",
+        "MARKET_RESEARCH",
+        "RCI",
+        "RSI",
+        "OPI",
+        "OSI"
+      ],
+      "title": "ServiceType",
+      "description": "Type of service offered to a client."
+    },
+    "TurnAroundTime": {
+      "type": "string",
+      "enum": [
+        "1 hour",
+        "2 hours",
+        "4 hours",
+        "8 hours",
+        "12 hours",
+        "24 hours",
+        "36 hours",
+        "48 hours",
+        "72 hours",
+        "120 hours"
+      ],
+      "title": "TurnAroundTime"
+    }
+  }
+}

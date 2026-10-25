@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cadencetranslate-com/main/json-schema/cadencetranslate-com-response-none-type-schema.json",
+  "title": "Response[NoneType]",
+  "x-generated": "2026-10-25",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cadencetranslate-com-openapi.json#/components/schemas/Response_NoneType_",
+  "properties": {
+    "message": {
+      "type": "string",
+      "title": "Message",
+      "default": "Operation successful"
+    },
+    "success": {
+      "type": "boolean",
+      "title": "Success",
+      "default": true
+    },
+    "data": {
+      "type": "null",
+      "title": "Data"
+    },
+    "errors": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Errors"
+    }
+  },
+  "type": "object"
+}

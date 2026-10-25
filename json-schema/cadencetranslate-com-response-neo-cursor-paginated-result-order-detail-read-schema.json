@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cadencetranslate-com/main/json-schema/cadencetranslate-com-response-neo-cursor-paginated-result-order-detail-read-schema.json",
+  "title": "Response[NeoCursorPaginatedResult[OrderDetailRead]]",
+  "x-generated": "2026-10-25",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cadencetranslate-com-openapi.json#/components/schemas/Response_NeoCursorPaginatedResult_OrderDetailRead__",
+  "properties": {
+    "message": {
+      "type": "string",
+      "title": "Message",
+      "default": "Operation successful"
+    },
+    "success": {
+      "type": "boolean",
+      "title": "Success",
+      "default": true
+    },
+    "data": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NeoCursorPaginatedResult_OrderDetailRead_"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "errors": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Errors"
+    }
+  },
+  "type": "object",
+  "$defs": {
+    "ExternalOrderStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "COMPLETED",
+        "CANCELLED",
+        "REJECTED",
+        "IN_PROGRESS"
+      ],
+      "title": "ExternalOrderStatus"
+    },
+    "NeoCursorPaginatedResult_OrderDetailRead_": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/OrderDetailRead"
+          },
+          "type": "array",
+          "title": "Items",
+          "description": "List of items in this page"
+        },
+        "hasNext": {
+          "type": "boolean",
+          "title": "Hasnext",
+          "description": "Whether there are more items after this page"
+        },
+        "hasPrevious": {
+          "type": "boolean",
+          "title": "Hasprevious",
+          "description": "Whether there are items before this page"
+        },
+        "nextCursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Nextcursor",
+          "description": "Cursor to fetch the next page. Pass as after parameter."
+        },
+        "previousCursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Previouscursor",
+          "description": "Cursor to fetch the previous page. Pass as before parameter."
+        },
+        "totalItemsCount": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Totalitemscount",
+          "description": "Total number of items matching the current filters (without pagination)"
+        }
+      },
+      "type": "object",
+      "required": [
+        "items",
+        "hasNext",
+        "hasPrevious",
+        "nextCursor",
+        "previousCursor"
+      ],
+      "title": "NeoCursorPaginatedResult[OrderDetailRead]"
+    },
+    "OrderDetailRead": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Id"
+        },
+        "organizationId": {
+          "type": "string",
+          "format": "uuid",
+          "title": "Organizationid"
+        },
+        "clientProjectId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientprojectid"
+        },
+        "clientProjectName": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientprojectname"
+        },
+        "status": {
+          "$ref": "#/$defs/ExternalOrderStatus"
+        },
+        "itemsCount": {
+          "type": "integer",
+          "title": "Itemscount",
+          "default": 0
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Createdat"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Updatedat"
+        }
+      },
+      "type": "object",
+      "required": [
+        "id",
+        "organizationId",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ],
+      "title": "OrderDetailRead",
+      "description": "Slim order projection used by GET /orders."
+    }
+  }
+}

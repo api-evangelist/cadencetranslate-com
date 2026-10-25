@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cadencetranslate-com/main/json-schema/cadencetranslate-com-cadence-info-response-schema.json",
+  "title": "CadenceInfoResponse",
+  "x-generated": "2026-10-25",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cadencetranslate-com-openapi.json#/components/schemas/CadenceInfoResponse",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "languages": {
+      "items": {
+        "$ref": "#/$defs/InternalLanguageCodeEnum"
+      },
+      "type": "array",
+      "title": "Languages"
+    },
+    "offeredTranscriptTypes": {
+      "items": {
+        "$ref": "#/$defs/ServiceType"
+      },
+      "type": "array",
+      "title": "Offeredtranscripttypes"
+    },
+    "supports": {
+      "$ref": "#/$defs/CadenceInfoSupports"
+    }
+  },
+  "type": "object",
+  "required": [
+    "name",
+    "languages",
+    "offeredTranscriptTypes",
+    "supports"
+  ],
+  "$defs": {
+    "CadenceInfoSupports": {
+      "properties": {
+        "rush": {
+          "type": "boolean",
+          "title": "Rush"
+        },
+        "cancel": {
+          "type": "boolean",
+          "title": "Cancel"
+        },
+        "getOrders": {
+          "type": "boolean",
+          "title": "Getorders"
+        },
+        "sandbox": {
+          "type": "boolean",
+          "title": "Sandbox"
+        },
+        "reprocess": {
+          "type": "boolean",
+          "title": "Reprocess"
+        },
+        "timestamped": {
+          "type": "boolean",
+          "title": "Timestamped"
+        }
+      },
+      "type": "object",
+      "required": [
+        "rush",
+        "cancel",
+        "getOrders",
+        "sandbox",
+        "reprocess",
+        "timestamped"
+      ],
+      "title": "CadenceInfoSupports"
+    },
+    "InternalLanguageCodeEnum": {
+      "type": "string",
+      "enum": [
+        "ar",
+        "zh-cn",
+        "zh-hk",
+        "zh-tw",
+        "nl",
+        "en",
+        "fr",
+        "de",
+        "he",
+        "hi",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "no",
+        "pt",
+        "pt-br",
+        "ru",
+        "es",
+        "sv",
+        "tr",
+        "vi",
+        "da",
+        "undefined"
+      ],
+      "title": "InternalLanguageCodeEnum",
+      "description": "Enum for internal language codes."
+    },
+    "ServiceType": {
+      "type": "string",
+      "enum": [
+        "AI",
+        "HITL",
+        "AI_TRANSLATED",
+        "HITL_TRANSLATED",
+        "AI_LITE",
+        "HITL_LITE",
+        "SF_LLM_QA",
+        "AI_V1",
+        "AI_V1_TRANSLATED",
+        "TRANSLATION",
+        "MARKET_RESEARCH",
+        "RCI",
+        "RSI",
+        "OPI",
+        "OSI"
+      ],
+      "title": "ServiceType",
+      "description": "Type of service offered to a client."
+    }
+  }
+}

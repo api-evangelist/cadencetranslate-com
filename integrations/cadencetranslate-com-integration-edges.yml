@@ -1,0 +1,22 @@
+generated: '2026-10-25'
+method: none
+source:
+- https://zapier.com/apps/cadencetranslate-com/integrations
+- https://zapier.com/apps/cadencetranslate/integrations
+- https://zapier.com/apps/cadence/integrations
+- https://n8n.io/integrations/cadencetranslate-com/
+- https://n8n.io/integrations/cadencetranslate/
+- https://composio.dev/toolkits/cadencetranslate-com
+- https://monid.ai/tools/cadencetranslate-com
+checked:
+- https://composio.dev/toolkits/cadencetranslate-com
+- https://monid.ai/tools/cadencetranslate-com
+- https://n8n.io/integrations/cadencetranslate-com/
+- https://n8n.io/integrations/cadencetranslate/
+- https://zapier.com/apps/cadence/integrations
+- https://zapier.com/apps/cadencetranslate-com/integrations
+- https://zapier.com/apps/cadencetranslate/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

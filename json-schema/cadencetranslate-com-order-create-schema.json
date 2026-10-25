@@ -1,0 +1,842 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cadencetranslate-com/main/json-schema/cadencetranslate-com-order-create-schema.json",
+  "title": "OrderCreate",
+  "x-generated": "2026-10-25",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/cadencetranslate-com-openapi.json#/components/schemas/OrderCreate",
+  "properties": {
+    "driveLinks": {
+      "items": {
+        "$ref": "#/$defs/DriveLinkCreate"
+      },
+      "type": "array",
+      "maxItems": 20,
+      "title": "Drivelinks"
+    },
+    "defaults": {
+      "$ref": "#/$defs/OrderDefaultsCreate"
+    },
+    "clientProjectId": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Clientprojectid"
+    },
+    "clientProjectName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Clientprojectname"
+    },
+    "services": {
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/TranscriptServiceEntry"
+          },
+          {
+            "$ref": "#/$defs/TranslationServiceEntry"
+          },
+          {
+            "$ref": "#/$defs/InterpretationServiceEntry"
+          }
+        ]
+      },
+      "type": "array",
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Services"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "services"
+  ],
+  "$defs": {
+    "DeliverySettings": {
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/EmailDelivery"
+          },
+          {
+            "$ref": "#/$defs/WebhookDelivery"
+          }
+        ]
+      },
+      "type": "array",
+      "maxItems": 5,
+      "title": "DeliverySettings"
+    },
+    "DriveLinkCreate": {
+      "properties": {
+        "shareWithFreelancer": {
+          "type": "boolean",
+          "title": "Sharewithfreelancer",
+          "default": false
+        },
+        "shareWithClient": {
+          "type": "boolean",
+          "title": "Sharewithclient",
+          "default": false
+        },
+        "url": {
+          "type": "string",
+          "maxLength": 2048,
+          "title": "Url"
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 255,
+          "title": "Label",
+          "default": ""
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "title": "DriveLinkCreate"
+    },
+    "EmailDelivery": {
+      "properties": {
+        "templateFormat": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TemplateFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "templateId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Templateid"
+        },
+        "method": {
+          "type": "string",
+          "const": "EMAIL",
+          "title": "Method",
+          "default": "EMAIL"
+        },
+        "emails": {
+          "items": {
+            "type": "string",
+            "format": "email"
+          },
+          "type": "array",
+          "minItems": 1,
+          "title": "Emails"
+        }
+      },
+      "type": "object",
+      "required": [
+        "emails"
+      ],
+      "title": "EmailDelivery",
+      "description": "Deliver result via email."
+    },
+    "InternalLanguageCodeEnum": {
+      "type": "string",
+      "enum": [
+        "ar",
+        "zh-cn",
+        "zh-hk",
+        "zh-tw",
+        "nl",
+        "en",
+        "fr",
+        "de",
+        "he",
+        "hi",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "no",
+        "pt",
+        "pt-br",
+        "ru",
+        "es",
+        "sv",
+        "tr",
+        "vi",
+        "da",
+        "undefined"
+      ],
+      "title": "InternalLanguageCodeEnum",
+      "description": "Enum for internal language codes."
+    },
+    "InterpretationServiceEntry": {
+      "properties": {
+        "contentUrl": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2083,
+              "minLength": 1,
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Contenturl"
+        },
+        "sourceLanguage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InternalLanguageCodeEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "undefined"
+        },
+        "serviceType": {
+          "$ref": "#/$defs/ServiceType"
+        },
+        "isRush": {
+          "type": "boolean",
+          "title": "Isrush",
+          "default": false
+        },
+        "turnaroundTime": {
+          "$ref": "#/$defs/TurnAroundTime",
+          "default": "48 hours"
+        },
+        "clientExternalId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientexternalid"
+        },
+        "overrides": {
+          "$ref": "#/$defs/ServiceOverrides"
+        },
+        "serviceGroup": {
+          "type": "string",
+          "const": "interpretation",
+          "title": "Servicegroup"
+        },
+        "targetLanguage": {
+          "$ref": "#/$defs/InternalLanguageCodeEnum"
+        },
+        "scheduledStartAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Scheduledstartat"
+        },
+        "estimatedDurationMin": {
+          "type": "integer",
+          "exclusiveMinimum": 0.0,
+          "title": "Estimateddurationmin"
+        },
+        "channelDetails": {
+          "$ref": "#/$defs/InterpretationVideoDetails"
+        },
+        "driveLinks": {
+          "items": {
+            "$ref": "#/$defs/DriveLinkCreate"
+          },
+          "type": "array",
+          "maxItems": 20,
+          "title": "Drivelinks"
+        },
+        "referenceMaterials": {
+          "items": {
+            "$ref": "#/$defs/OrderAttachmentCreate"
+          },
+          "type": "array",
+          "maxItems": 20,
+          "title": "Referencematerials"
+        },
+        "recordMeeting": {
+          "type": "boolean",
+          "title": "Recordmeeting",
+          "default": false
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "serviceType",
+        "serviceGroup",
+        "targetLanguage",
+        "scheduledStartAt",
+        "estimatedDurationMin",
+        "channelDetails"
+      ],
+      "title": "InterpretationServiceEntry"
+    },
+    "InterpretationVideoDetails": {
+      "properties": {
+        "channel": {
+          "type": "string",
+          "const": "REMOTE_VIDEO",
+          "title": "Channel",
+          "default": "REMOTE_VIDEO"
+        },
+        "meetingUrl": {
+          "type": "string",
+          "maxLength": 2083,
+          "minLength": 1,
+          "format": "uri",
+          "title": "Meetingurl"
+        },
+        "platform": {
+          "type": "string",
+          "enum": [
+            "ZOOM",
+            "TEAMS",
+            "MEET",
+            "CADENCE",
+            "OTHER"
+          ],
+          "title": "Platform"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "meetingUrl",
+        "platform"
+      ],
+      "title": "InterpretationVideoDetails"
+    },
+    "MeetingRecordingRequest": {
+      "properties": {
+        "meetingUrl": {
+          "type": "string",
+          "maxLength": 2083,
+          "minLength": 1,
+          "format": "uri",
+          "title": "Meetingurl"
+        },
+        "scheduledStartAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Scheduledstartat"
+        },
+        "estimatedDurationMin": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0.0
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Estimateddurationmin"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "meetingUrl",
+        "scheduledStartAt"
+      ],
+      "title": "MeetingRecordingRequest",
+      "description": "What an order entry supplies to have its meeting recorded.\n\nNested inside ``TranscriptServiceEntry`` at order intake, so it forbids\nunknown keys like the entries around it."
+    },
+    "OrderAttachmentCreate": {
+      "properties": {
+        "shareWithFreelancer": {
+          "type": "boolean",
+          "title": "Sharewithfreelancer",
+          "default": false
+        },
+        "shareWithClient": {
+          "type": "boolean",
+          "title": "Sharewithclient",
+          "default": false
+        },
+        "s3Key": {
+          "type": "string",
+          "title": "S3Key"
+        },
+        "fileName": {
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Filename"
+        },
+        "contentType": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 255
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Contenttype"
+        },
+        "sizeBytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0.0
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sizebytes"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "s3Key",
+        "fileName"
+      ],
+      "title": "OrderAttachmentCreate",
+      "description": "One uploaded file to record against an order.\n\n``s3_key`` must be a key minted by ``POST /core/upload-url`` for this\nenvironment; anything else is a 422 on ``s3Key``."
+    },
+    "OrderDefaultsCreate": {
+      "properties": {
+        "deliverySettings": {
+          "$ref": "#/$defs/DeliverySettings"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "title": "OrderDefaultsCreate",
+      "description": "Write shape for order-level defaults."
+    },
+    "ServiceOverrides": {
+      "properties": {
+        "deliverySettings": {
+          "$ref": "#/$defs/DeliverySettings"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "title": "ServiceOverrides"
+    },
+    "ServiceType": {
+      "type": "string",
+      "enum": [
+        "AI",
+        "HITL",
+        "AI_TRANSLATED",
+        "HITL_TRANSLATED",
+        "AI_LITE",
+        "HITL_LITE",
+        "SF_LLM_QA",
+        "AI_V1",
+        "AI_V1_TRANSLATED",
+        "TRANSLATION",
+        "MARKET_RESEARCH",
+        "RCI",
+        "RSI",
+        "OPI",
+        "OSI"
+      ],
+      "title": "ServiceType",
+      "description": "Type of service offered to a client."
+    },
+    "Speaker": {
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "Firstname"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Lastname"
+        },
+        "speakerType": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpeakerType"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Role the speaker plays in the conversation."
+        },
+        "audioChannelId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Audiochannelid"
+        },
+        "originalLabel": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Originallabel",
+          "description": "Label the speaker had in the raw transcript (e.g. S1 or Speaker 1); kept on the order for reference. Speaker labels are managed in Mega Editor."
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName"
+      ],
+      "title": "Speaker",
+      "description": "Schema for a speaker in a transcript."
+    },
+    "SpeakerType": {
+      "type": "string",
+      "enum": [
+        "interviewer",
+        "interviewee",
+        "host",
+        "interpreter"
+      ],
+      "title": "SpeakerType",
+      "description": "Role a speaker plays in the conversation."
+    },
+    "TemplateFormat": {
+      "type": "string",
+      "enum": [
+        "docx",
+        "json",
+        "txt",
+        "srt"
+      ],
+      "title": "TemplateFormat",
+      "description": "Transcript template format."
+    },
+    "TranscriptServiceEntry": {
+      "properties": {
+        "contentUrl": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2083,
+              "minLength": 1,
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Contenturl"
+        },
+        "sourceLanguage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InternalLanguageCodeEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "undefined"
+        },
+        "serviceType": {
+          "$ref": "#/$defs/ServiceType"
+        },
+        "isRush": {
+          "type": "boolean",
+          "title": "Isrush",
+          "default": false
+        },
+        "turnaroundTime": {
+          "$ref": "#/$defs/TurnAroundTime",
+          "default": "48 hours"
+        },
+        "clientExternalId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientexternalid"
+        },
+        "overrides": {
+          "$ref": "#/$defs/ServiceOverrides"
+        },
+        "topic": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Topic"
+        },
+        "dateOfInterview": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Dateofinterview",
+          "description": "Date the interview was conducted; rendered by FORMATTING."
+        },
+        "industry": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Industry"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Description"
+        },
+        "glossaryTerms": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "title": "Glossaryterms"
+        },
+        "speakers": {
+          "items": {
+            "$ref": "#/$defs/Speaker"
+          },
+          "type": "array",
+          "title": "Speakers"
+        },
+        "serviceGroup": {
+          "type": "string",
+          "const": "transcript",
+          "title": "Servicegroup"
+        },
+        "targetLanguage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InternalLanguageCodeEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "undefined"
+        },
+        "meetingRecording": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeetingRecordingRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "serviceType",
+        "serviceGroup"
+      ],
+      "title": "TranscriptServiceEntry"
+    },
+    "TranslationServiceEntry": {
+      "properties": {
+        "contentUrl": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 2083,
+              "minLength": 1,
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Contenturl"
+        },
+        "sourceLanguage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InternalLanguageCodeEnum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "undefined"
+        },
+        "serviceType": {
+          "$ref": "#/$defs/ServiceType"
+        },
+        "isRush": {
+          "type": "boolean",
+          "title": "Isrush",
+          "default": false
+        },
+        "turnaroundTime": {
+          "$ref": "#/$defs/TurnAroundTime",
+          "default": "48 hours"
+        },
+        "clientExternalId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clientexternalid"
+        },
+        "overrides": {
+          "$ref": "#/$defs/ServiceOverrides"
+        },
+        "serviceGroup": {
+          "type": "string",
+          "const": "translation",
+          "title": "Servicegroup"
+        },
+        "targetLanguage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InternalLanguageCodeEnum"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "serviceType",
+        "serviceGroup",
+        "targetLanguage"
+      ],
+      "title": "TranslationServiceEntry"
+    },
+    "TurnAroundTime": {
+      "type": "string",
+      "enum": [
+        "1 hour",
+        "2 hours",
+        "4 hours",
+        "8 hours",
+        "12 hours",
+        "24 hours",
+        "36 hours",
+        "48 hours",
+        "72 hours",
+        "120 hours"
+      ],
+      "title": "TurnAroundTime"
+    },
+    "WebhookDelivery": {
+      "properties": {
+        "templateFormat": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TemplateFormat"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "templateId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Templateid"
+        },
+        "method": {
+          "type": "string",
+          "const": "WEBHOOK",
+          "title": "Method",
+          "default": "WEBHOOK"
+        },
+        "callbackUrl": {
+          "type": "string",
+          "maxLength": 500,
+          "minLength": 1,
+          "format": "uri",
+          "title": "Callbackurl"
+        },
+        "customHeaders": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object",
+          "title": "Customheaders"
+        }
+      },
+      "type": "object",
+      "required": [
+        "callbackUrl"
+      ],
+      "title": "WebhookDelivery",
+      "description": "Inbound order contract for delivery to a public HTTPS webhook.\n\nHistorical order/transcript callback JSON is not revalidated through this\nwrite schema. The delivery worker accepts that legacy shape but still sends\nonly through the independently enforced public-HTTPS transport boundary."
+    }
+  }
+}

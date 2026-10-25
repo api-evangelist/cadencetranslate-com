@@ -1,0 +1,20 @@
+# Cadence Translate
+
+> Cadence Translate is a language services provider founded in 2014, delivering interpretation, translation, transcription, and market research to capital markets, expert networks, consultancies, and corporations worldwide.
+
+## Services
+
+- [Expert Networks](https://www.cadencetranslate.com/Expert-Networks): Interpretation and translation support for expert network calls, including IDIs and compliance-sensitive discussions.
+- [Transcription](https://www.cadencetranslate.com/Transcription): Call transcription services, including HITL and MTPE workflows.
+- [Compliance](https://www.cadencetranslate.com/Compliance): Compliance-grade interpretation and transcription for MNPI-sensitive expert calls and IR meetings.
+
+## Who We Serve
+
+- [Capital Markets](https://www.cadencetranslate.com/Capital-Markets)
+- [Consultancies](https://www.cadencetranslate.com/Consultancies)
+- [Corporations](https://www.cadencetranslate.com/Corporations)
+
+## About
+
+- [About Us](https://www.cadencetranslate.com/About-Us)
+- [Contact](https://www.cadencetranslate.com/Contact-Us)
